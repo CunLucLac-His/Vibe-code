@@ -680,13 +680,6 @@ function App() {
                   </p>
                 </div>
                 
-                <a
-                  href={`mailto:${EMAIL}`}
-                  className="rounded-full border border-stroke hover:border-transparent px-6 py-2.5 text-xs text-text-primary font-medium transition-all group relative overflow-hidden flex items-center gap-1.5 self-start"
-                >
-                  <div className="absolute inset-0 accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                  <span className="relative z-10">Subscribe to updates</span>
-                </a>
               </motion.div>
 
               {/* Horizontal entries as pills */}
@@ -747,15 +740,6 @@ function App() {
                 <p className="text-muted text-sm mb-8 leading-relaxed max-w-sm mx-auto">
                   Bộ sưu tập thử nghiệm thẩm mỹ, component UI chuyển động tương tác, và các setup code trừu tượng.
                 </p>
-                <a
-                  href="https://dribbble.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-full border border-stroke hover:border-transparent px-6 py-2.5 text-xs text-text-primary font-medium transition-all group relative overflow-hidden inline-flex items-center gap-1.5"
-                >
-                  <div className="absolute inset-0 accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                  <span className="relative z-10">Browse Dribbble ↗</span>
-                </a>
               </div>
             </div>
 
@@ -943,10 +927,6 @@ function App() {
               <h2 className="text-4xl md:text-6xl font-display italic text-text-primary mb-6">
                 Let's make something <span className="underline decoration-stroke underline-offset-8">impactful</span>
               </h2>
-              <p className="text-muted text-sm max-w-md mb-8 leading-relaxed">
-                Liên kết các giải pháp Trí Tuệ Nhân Tạo thực tiễn và thiết lập cấu trúc mã nguồn tối ưu. Gửi tin nhắn trực tiếp qua email.
-              </p>
-
               {/* Email CTA Button with Hover Gradient Ring */}
               <a
                 href={`mailto:${EMAIL}`}
