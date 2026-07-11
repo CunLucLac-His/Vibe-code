@@ -59,7 +59,7 @@ function HlsVideo({ src, className = "" }: { src: string; className?: string }) 
 function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   const [count, setCount] = useState(0);
   const [wordIndex, setWordIndex] = useState(0);
-  const words = ["Design", "Create", "Inspire"];
+  const words = ["Design", "by Tiến Trung", "CunZ"];
 
   useEffect(() => {
     // Word cycler
@@ -335,10 +335,10 @@ function App() {
 
   // Map user's real projects to Bento column spans (7/5/5/7 pattern)
   const mappedProjects = [
-    { ...PROJECTS[5], span: "md:col-span-7", img: "/images/vn-finance-bot.jpg" }, // VN Finance Bot
+    { ...PROJECTS[5], span: "md:col-span-7", img: "/images/vn-finance-bot.png" }, // VN Finance Bot
     { ...PROJECTS[2], span: "md:col-span-5", img: "/images/ai-chatbot.jpg" }, // AI chatbot
-    { ...PROJECTS[0], span: "md:col-span-5", img: "/images/personal-os.jpg" }, // Personal OS
-    { ...PROJECTS[1], span: "md:col-span-7", img: "/images/ecommerce-fashion.jpg" }, // E-commerce
+    { ...PROJECTS[0], span: "md:col-span-5", img: "/images/personal-os.png" }, // Personal OS
+    { ...PROJECTS[1], span: "md:col-span-7", img: "/images/ecommerce-fashion.png" }, // E-commerce
   ];
 
   // Journal horizontal pills content (4 entries mapping user thoughts)
@@ -485,11 +485,12 @@ function App() {
                 </button>
 
                 <a
-                  href={`mailto:${EMAIL}`}
+                  href="/resume.pdf"
+                  download
                   className="group relative rounded-full text-sm px-8 py-3.5 border-2 border-stroke bg-bg text-text-primary font-medium hover:border-transparent transition-all duration-300 overflow-hidden"
                 >
                   <div className="absolute inset-0 accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0 pointer-events-none" />
-                  <span className="relative z-10">Reach out...</span>
+                  <span className="relative z-10">Tải CV</span>
                 </a>
               </div>
             </div>
