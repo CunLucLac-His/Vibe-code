@@ -407,7 +407,7 @@ function App() {
         </div>
       </section>
 
-      <section id="about" className="relative z-10 px-6 py-24 max-w-3xl mx-auto text-center">
+      <section id="about" className="relative z-10 px-6 py-24 max-w-3xl w-full mx-auto text-center">
         <Reveal>
           <h2
             className="text-4xl md:text-5xl text-white mb-8 tracking-tight"
@@ -525,7 +525,7 @@ function App() {
         </div>
       </div>
 
-      <section id="experience" className="relative z-10 px-6 py-24 max-w-5xl mx-auto border-t border-white/5">
+      <section id="experience" className="relative z-10 px-6 py-24 max-w-5xl w-full mx-auto border-t border-white/5">
         <Reveal>
           <h2
             className="text-4xl md:text-5xl text-white mb-12 tracking-tight text-center"
@@ -589,7 +589,7 @@ function App() {
         </div>
       </section>
 
-      <section id="skills" className="relative z-10 px-6 py-24 max-w-6xl mx-auto">
+      <section id="skills" className="relative z-10 px-6 py-24 max-w-6xl w-full mx-auto">
         <Reveal>
           <h2
             className="text-4xl md:text-5xl text-white mb-8 tracking-tight text-center"
@@ -626,7 +626,7 @@ function App() {
         </div>
       </section>
 
-      <section id="contact" className="relative z-10 px-6 py-24 max-w-4xl mx-auto text-center border-t border-white/5">
+      <section id="contact" className="relative z-10 px-6 py-24 max-w-4xl w-full mx-auto text-center border-t border-white/5">
         <Reveal>
           <h2
             className="text-4xl md:text-5xl text-white mb-8 tracking-tight"
