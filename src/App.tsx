@@ -325,28 +325,28 @@ function App() {
 
   // Playground images (6 abstract items)
   const playgroundItems = [
-    { title: "Automotive Motion", img: "https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=400&auto=format&fit=crop" },
-    { title: "Urban Architecture", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=400&auto=format&fit=crop" },
-    { title: "Human Perspective", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=400&auto=format&fit=crop" },
-    { title: "Brand Identity", img: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=400&auto=format&fit=crop" },
-    { title: "Neural Mesh", img: "https://images.unsplash.com/photo-1509228468518-180dd4864904?q=80&w=400&auto=format&fit=crop" },
-    { title: "Cyberpunk Terminal", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=400&auto=format&fit=crop" },
+    { title: "Automotive Motion", img: "/images/pg-automotive.jpg" },
+    { title: "Urban Architecture", img: "/images/pg-architecture.jpg" },
+    { title: "Human Perspective", img: "/images/pg-human.jpg" },
+    { title: "Brand Identity", img: "/images/pg-brand.jpg" },
+    { title: "Neural Mesh", img: "/images/pg-neural.jpg" },
+    { title: "Cyberpunk Terminal", img: "/images/pg-cyberpunk.jpg" },
   ];
 
   // Map user's real projects to Bento column spans (7/5/5/7 pattern)
   const mappedProjects = [
-    { ...PROJECTS[5], span: "md:col-span-7", img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=600&auto=format&fit=crop" }, // VN Finance Bot
-    { ...PROJECTS[2], span: "md:col-span-5", img: "https://images.unsplash.com/photo-1677442136019-21780efad99a?q=80&w=600&auto=format&fit=crop" }, // AI chatbot
-    { ...PROJECTS[0], span: "md:col-span-5", img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&auto=format&fit=crop" }, // Personal OS
-    { ...PROJECTS[1], span: "md:col-span-7", img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=600&auto=format&fit=crop" }, // E-commerce
+    { ...PROJECTS[5], span: "md:col-span-7", img: "/images/vn-finance-bot.jpg" }, // VN Finance Bot
+    { ...PROJECTS[2], span: "md:col-span-5", img: "/images/ai-chatbot.jpg" }, // AI chatbot
+    { ...PROJECTS[0], span: "md:col-span-5", img: "/images/personal-os.jpg" }, // Personal OS
+    { ...PROJECTS[1], span: "md:col-span-7", img: "/images/ecommerce-fashion.jpg" }, // E-commerce
   ];
 
   // Journal horizontal pills content (4 entries mapping user thoughts)
   const journalEntries = [
-    { title: "Tích hợp DeepSeek LLM cho Pipeline Phân loại Tin tức", date: "04/2026", time: "5 min read", img: "https://images.unsplash.com/photo-1680814907498-8f7fe8953ea6?q=80&w=150&auto=format&fit=crop" },
-    { title: "Vận hành Docker & AWS EC2 chạy Telegram Bot 24/7", date: "02/2026", time: "8 min read", img: "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=80&w=150&auto=format&fit=crop" },
-    { title: "Tối ưu hóa Hiệu năng Front-end & Tránh Reflow Layout", date: "12/2025", time: "6 min read", img: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=150&auto=format&fit=crop" },
-    { title: "Mô hình hóa tài chính tương tác trên Web (DCF Modeling)", date: "09/2025", time: "10 min read", img: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=150&auto=format&fit=crop" },
+    { title: "Tích hợp DeepSeek LLM cho Pipeline Phân loại Tin tức", date: "04/2026", time: "5 min read", img: "/images/journal-deepseek.jpg" },
+    { title: "Vận hành Docker & AWS EC2 chạy Telegram Bot 24/7", date: "02/2026", time: "8 min read", img: "/images/journal-docker-aws.jpg" },
+    { title: "Tối ưu hóa Hiệu năng Front-end & Tránh Reflow Layout", date: "12/2025", time: "6 min read", img: "/images/journal-perf.jpg" },
+    { title: "Mô hình hóa tài chính tương tác trên Web (DCF Modeling)", date: "09/2025", time: "10 min read", img: "/images/journal-dcf.jpg" },
   ];
 
   return (
@@ -593,7 +593,7 @@ function App() {
                         <h3 className="text-xl md:text-2xl font-display italic text-text-primary mb-2">
                           {project.title}
                         </h3>
-                        <p className="text-xs text-zinc-100 mb-4 leading-relaxed font-semibold">
+                        <p className="text-sm text-zinc-100 mb-4 leading-relaxed font-semibold">
                           {project.description}
                         </p>
                         
@@ -617,7 +617,7 @@ function App() {
                         </div>
                         
                         {/* AI Integration Highlight */}
-                        <div className="p-3 bg-stroke/50 border border-stroke/70 rounded-xl text-xs text-zinc-150 font-semibold">
+                        <div className="p-3 bg-stroke/50 border border-stroke/70 rounded-xl text-sm text-zinc-150 font-semibold">
                           <span className="text-text-primary font-bold">Vai trò AI:</span> {project.aiRole}
                         </div>
                       </div>
@@ -860,10 +860,10 @@ function App() {
                         <span className="text-[10px] text-zinc-200 font-mono font-semibold">{exp.period}</span>
                         <h4 className="text-base font-bold text-text-primary mt-1">{exp.title}</h4>
                         <p className="text-xs text-text-primary font-semibold mt-1 bg-stroke/50 px-2 py-0.5 rounded w-max border border-white/5">{exp.badge}</p>
-                        <p className="text-xs text-zinc-200 mt-2 leading-relaxed font-semibold">{exp.description}</p>
-                        
+                        <p className="text-sm text-zinc-200 mt-2 leading-relaxed font-semibold">{exp.description}</p>
+
                         {exp.bullets && (
-                          <ul className="text-[10px] text-zinc-200 space-y-1.5 mt-3 list-disc pl-4 font-semibold">
+                          <ul className="text-xs text-zinc-200 space-y-1.5 mt-3 list-disc pl-4 font-semibold">
                             {exp.bullets.map((bullet) => (
                               <li key={bullet}>{bullet}</li>
                             ))}
