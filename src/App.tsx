@@ -530,7 +530,7 @@ function App() {
                     Featured <span className="font-display italic">projects</span>
                   </h2>
                   <p className="text-muted text-sm max-w-md mt-2 leading-relaxed">
-                    A selection of projects I've worked on, from concept to launch, driven by AI and data logic.
+                    Tuyển chọn các dự án mình đã thực hiện, từ ý tưởng đến triển khai thực tế, xoay quanh AI và xử lý dữ liệu.
                   </p>
                 </div>
                 
@@ -676,7 +676,7 @@ function App() {
                     Recent <span className="font-display italic">thoughts</span>
                   </h2>
                   <p className="text-muted text-sm max-w-md mt-2 leading-relaxed">
-                    Writing about full-stack engineering, prompt pipelines, and modern web optimization.
+                    Ghi chép về full-stack engineering, pipeline xử lý prompt, và tối ưu hóa web hiện đại.
                   </p>
                 </div>
                 
@@ -745,7 +745,7 @@ function App() {
                   Visual <span className="font-display italic">playground</span>
                 </h2>
                 <p className="text-muted text-sm mb-8 leading-relaxed max-w-sm mx-auto">
-                  A curated gallery of aesthetic experiments, interactive motion UI components, and abstract code setups.
+                  Bộ sưu tập thử nghiệm thẩm mỹ, component UI chuyển động tương tác, và các setup code trừu tượng.
                 </p>
                 <a
                   href="https://dribbble.com"
