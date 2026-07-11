@@ -169,6 +169,7 @@ function App() {
 
   // Playground Parallax lightbox state
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
+  const [aiProcessModal, setAiProcessModal] = useState<{ title: string; aiProcess: string } | null>(null);
 
   const roles = ["Creative Developer", "Fullstack Engineer", "AI Integrator", "Product Builder"];
 
@@ -343,10 +344,38 @@ function App() {
 
   // Journal horizontal pills content (4 entries mapping user thoughts)
   const journalEntries = [
-    { title: "Tích hợp DeepSeek LLM cho Pipeline Phân loại Tin tức", date: "04/2026", time: "5 min read", img: "/images/journal-deepseek.jpg" },
-    { title: "Vận hành Docker & AWS EC2 chạy Telegram Bot 24/7", date: "02/2026", time: "8 min read", img: "/images/journal-docker-aws.jpg" },
-    { title: "Tối ưu hóa Hiệu năng Front-end & Tránh Reflow Layout", date: "12/2025", time: "6 min read", img: "/images/journal-perf.jpg" },
-    { title: "Mô hình hóa tài chính tương tác trên Web (DCF Modeling)", date: "09/2025", time: "10 min read", img: "/images/journal-dcf.jpg" },
+    {
+      title: "Tích hợp DeepSeek LLM cho Pipeline Phân loại Tin tức",
+      date: "04/2026",
+      time: "5 min read",
+      img: "/images/journal-deepseek.jpg",
+      aiProcess:
+        "Mình trao đổi trực tiếp với Claude Code để thiết kế pipeline: mô tả bài toán (phân loại - dịch - trích xuất thực thể tin tài chính), Claude đề xuất kiến trúc gọi DeepSeek LLM theo từng bước, mình review và yêu cầu chỉnh sửa prompt cho tới khi kết quả phân loại chính xác trên dữ liệu thật.",
+    },
+    {
+      title: "Vận hành Docker & AWS EC2 chạy Telegram Bot 24/7",
+      date: "02/2026",
+      time: "8 min read",
+      img: "/images/journal-docker-aws.jpg",
+      aiProcess:
+        "Mình nhờ Claude Code viết Dockerfile và hướng dẫn deploy lên AWS EC2, tự tay chạy lệnh và test thật trên server, báo lỗi thực tế (session Telethon, flood-control) để Claude giúp sửa từng vấn đề vận hành cụ thể.",
+    },
+    {
+      title: "Tối ưu hóa Hiệu năng Front-end & Tránh Reflow Layout",
+      date: "12/2025",
+      time: "6 min read",
+      img: "/images/journal-perf.jpg",
+      aiProcess:
+        "Mình dùng Claude Code để rà code React/Tailwind, chỉ ra chỗ gây reflow/layout shift, rồi tự kiểm chứng lại bằng DevTools trước khi áp dụng bản sửa.",
+    },
+    {
+      title: "Mô hình hóa tài chính tương tác trên Web (DCF Modeling)",
+      date: "09/2025",
+      time: "10 min read",
+      img: "/images/journal-dcf.jpg",
+      aiProcess:
+        "Mình cung cấp công thức DCF/WACC thật, nhờ Claude Code chuyển thành component tính toán tương tác trên web, rồi tự đối chiếu kết quả với model Excel gốc để đảm bảo đúng số liệu.",
+    },
   ];
 
   return (
@@ -707,9 +736,14 @@ function App() {
                     <div className="flex items-center justify-between sm:justify-end gap-6 w-full sm:w-auto border-t border-stroke/40 pt-3 sm:pt-0 sm:border-0">
                       <span className="text-xs text-zinc-200 font-mono font-semibold">{entry.time}</span>
                       <span className="text-xs text-zinc-200 font-mono hidden sm:inline font-semibold">{entry.date}</span>
-                      <div className="w-8 h-8 rounded-full border border-stroke group-hover:border-text-primary flex items-center justify-center transition-colors">
+                      <button
+                        type="button"
+                        onClick={() => setAiProcessModal({ title: entry.title, aiProcess: entry.aiProcess })}
+                        aria-label={`Xem quy trình dùng AI cho "${entry.title}"`}
+                        className="w-8 h-8 rounded-full border border-stroke group-hover:border-text-primary flex items-center justify-center transition-colors"
+                      >
                         <ArrowRight size={14} className="text-zinc-200 group-hover:text-text-primary transition-colors" />
-                      </div>
+                      </button>
                     </div>
                   </div>
                 ))}
@@ -1011,6 +1045,39 @@ function App() {
                   alt="Playground Exploration Preview"
                   className="max-w-full max-h-[85vh] rounded-2xl object-contain border border-stroke"
                 />
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* ----------------------------------------------------
+              Journal AI Process Modal
+              ---------------------------------------------------- */}
+          <AnimatePresence>
+            {aiProcessModal && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setAiProcessModal(null)}
+                className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-md flex items-center justify-center p-4 cursor-zoom-out"
+              >
+                <motion.div
+                  initial={{ scale: 0.95, opacity: 0, y: 10 }}
+                  animate={{ scale: 1, opacity: 1, y: 0 }}
+                  exit={{ scale: 0.95, opacity: 0, y: 10 }}
+                  onClick={(e) => e.stopPropagation()}
+                  className="max-w-lg w-full bg-surface border border-stroke rounded-3xl p-8 cursor-auto"
+                >
+                  <span className="text-xs text-muted uppercase tracking-[0.3em] font-medium">
+                    Quy trình dùng AI
+                  </span>
+                  <h3 className="text-xl font-display italic text-text-primary mt-2 mb-4">
+                    {aiProcessModal.title}
+                  </h3>
+                  <p className="text-sm text-zinc-100 leading-relaxed font-semibold">
+                    {aiProcessModal.aiProcess}
+                  </p>
+                </motion.div>
               </motion.div>
             )}
           </AnimatePresence>
