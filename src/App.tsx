@@ -170,6 +170,12 @@ function App() {
   // Playground Parallax lightbox state
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
   const [aiProcessModal, setAiProcessModal] = useState<{ title: string; aiProcess: string } | null>(null);
+  const [projectDetailModal, setProjectDetailModal] = useState<{
+    title: string;
+    aiRole: string;
+    process?: string;
+    growth?: string;
+  } | null>(null);
 
   const roles = ["Creative Developer", "Fullstack Engineer", "AI Integrator", "Product Builder"];
 
@@ -326,12 +332,12 @@ function App() {
 
   // Playground images (6 abstract items)
   const playgroundItems = [
-    { title: "Automotive Motion", img: "/images/pg-automotive.jpg" },
-    { title: "Urban Architecture", img: "/images/pg-architecture.jpg" },
-    { title: "Human Perspective", img: "/images/pg-human.jpg" },
-    { title: "Brand Identity", img: "/images/pg-brand.jpg" },
+    { title: "DeepSeek Pipeline", img: "/images/pg-automotive.jpg" },
+    { title: "VN Market Dashboard", img: "/images/pg-architecture.jpg" },
+    { title: "Prompt Engineering", img: "/images/pg-human.jpg" },
+    { title: "CunZ Brand System", img: "/images/pg-brand.jpg" },
     { title: "Neural Mesh", img: "/images/pg-neural.jpg" },
-    { title: "Cyberpunk Terminal", img: "/images/pg-cyberpunk.jpg" },
+    { title: "Automation Terminal", img: "/images/pg-cyberpunk.jpg" },
   ];
 
   // Map user's real projects to Bento column spans (7/5/5/7 pattern)
@@ -482,7 +488,7 @@ function App() {
             {/* Hero content */}
             <div className="relative z-10 px-6 text-center max-w-4xl flex flex-col items-center select-none">
               <span className="blur-in text-xs text-text-primary uppercase tracking-[0.3em] mb-6 inline-block font-semibold bg-stroke/60 px-3 py-1.5 rounded-full border border-white/5 shadow-sm">
-                COLLECTION '26
+PORTFOLIO '26
               </span>
               <h1 className="name-reveal text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-display italic leading-[0.9] tracking-tight text-text-primary mb-6">
                 Hà Tiến Trung
@@ -647,31 +653,27 @@ function App() {
                           })}
                         </div>
                         
-                        {/* AI Integration Highlight */}
-                        <div className="p-3 bg-stroke/50 border border-stroke/70 rounded-xl text-sm text-zinc-150 font-semibold mb-3">
-                          <span className="text-text-primary font-bold">Vai trò AI:</span> {project.aiRole}
-                        </div>
-
-                        {project.process && (
-                          <div className="p-3 bg-stroke/50 border border-stroke/70 rounded-xl text-sm text-zinc-150 font-semibold mb-3">
-                            <span className="text-text-primary font-bold">Quá trình trao đổi:</span> {project.process}
-                          </div>
-                        )}
-
-                        {project.growth && (
-                          <div className="p-3 bg-stroke/50 border border-stroke/70 rounded-xl text-sm text-zinc-150 font-semibold">
-                            <span className="text-text-primary font-bold">Kỹ năng phát triển:</span> {project.growth}
-                          </div>
-                        )}
                       </div>
 
                       <div className="flex justify-between items-center w-full mt-4">
-                        <div className="accent-gradient p-[1px] rounded-full">
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setProjectDetailModal({
+                              title: project.title,
+                              aiRole: project.aiRole,
+                              process: project.process,
+                              growth: project.growth,
+                            });
+                          }}
+                          className="accent-gradient p-[1px] rounded-full"
+                        >
                           <div className="bg-white text-zinc-950 text-xs px-4 py-2 rounded-full font-medium flex items-center gap-1.5 shadow-sm">
                             View — <span className="font-display italic font-semibold">{project.title}</span>
                           </div>
-                        </div>
-                        
+                        </button>
+
                         {project.link ? (
                           <a
                             href={project.link}
@@ -963,7 +965,7 @@ function App() {
             <div className="relative z-10 w-full overflow-hidden border-t border-b border-stroke/40 py-6 mb-16 select-none bg-bg/50 backdrop-blur-sm">
               <div ref={marqueeRef} className="flex whitespace-nowrap text-3xl md:text-5xl font-display italic text-text-primary/10 tracking-[0.1em]">
                 {Array(15)
-                  .fill("BUILDING THE FUTURE • ")
+                  .fill("AI & FINANCE, SELF-TAUGHT • ")
                   .map((text, idx) => (
                     <span key={idx}>{text}</span>
                   ))}
@@ -1090,6 +1092,49 @@ function App() {
                   <p className="text-sm text-zinc-100 leading-relaxed font-semibold">
                     {aiProcessModal.aiProcess}
                   </p>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* ----------------------------------------------------
+              Featured Project Detail Modal
+              ---------------------------------------------------- */}
+          <AnimatePresence>
+            {projectDetailModal && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setProjectDetailModal(null)}
+                className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-md flex items-center justify-center p-4 cursor-zoom-out"
+              >
+                <motion.div
+                  initial={{ scale: 0.95, opacity: 0, y: 10 }}
+                  animate={{ scale: 1, opacity: 1, y: 0 }}
+                  exit={{ scale: 0.95, opacity: 0, y: 10 }}
+                  onClick={(e) => e.stopPropagation()}
+                  className="max-w-lg w-full bg-surface border border-stroke rounded-3xl p-8 cursor-auto max-h-[85vh] overflow-y-auto"
+                >
+                  <span className="text-xs text-muted uppercase tracking-[0.3em] font-medium">
+                    Chi tiết dự án
+                  </span>
+                  <h3 className="text-xl font-display italic text-text-primary mt-2 mb-4">
+                    {projectDetailModal.title}
+                  </h3>
+                  <div className="p-3 bg-stroke/50 border border-stroke/70 rounded-xl text-sm text-zinc-150 font-semibold mb-3">
+                    <span className="text-text-primary font-bold">Vai trò AI:</span> {projectDetailModal.aiRole}
+                  </div>
+                  {projectDetailModal.process && (
+                    <div className="p-3 bg-stroke/50 border border-stroke/70 rounded-xl text-sm text-zinc-150 font-semibold mb-3">
+                      <span className="text-text-primary font-bold">Quá trình trao đổi:</span> {projectDetailModal.process}
+                    </div>
+                  )}
+                  {projectDetailModal.growth && (
+                    <div className="p-3 bg-stroke/50 border border-stroke/70 rounded-xl text-sm text-zinc-150 font-semibold">
+                      <span className="text-text-primary font-bold">Kỹ năng phát triển:</span> {projectDetailModal.growth}
+                    </div>
+                  )}
                 </motion.div>
               </motion.div>
             )}
