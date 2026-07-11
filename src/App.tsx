@@ -447,12 +447,13 @@ function App() {
 
               {/* Say Hi Button */}
               <a
-                href={`mailto:${EMAIL}`}
+                href="/resume.pdf"
+                download
                 className="relative text-xs sm:text-sm rounded-full px-3 sm:px-4 py-1.5 bg-surface text-text-primary flex items-center gap-1 border border-white/5 overflow-hidden transition-all group"
               >
                 <div className="absolute inset-0 accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                 <div className="relative z-10 flex items-center gap-1.5 text-text-primary group-hover:text-text-primary">
-                  Say hi ↗
+                  Tải CV
                 </div>
               </a>
             </div>
@@ -618,7 +619,7 @@ function App() {
                     </div>
 
                     {/* Premium Hover Overlay details */}
-                    <div className="absolute inset-0 bg-bg/85 opacity-0 group-hover:opacity-100 backdrop-blur-lg transition-all duration-300 flex flex-col justify-between p-6 md:p-8 z-30">
+                    <div className="absolute inset-0 bg-bg/85 opacity-0 group-hover:opacity-100 backdrop-blur-lg transition-all duration-300 flex flex-col justify-between p-6 md:p-8 z-30 overflow-y-auto">
                       <div>
                         <h3 className="text-xl md:text-2xl font-display italic text-text-primary mb-2">
                           {project.title}
@@ -647,9 +648,21 @@ function App() {
                         </div>
                         
                         {/* AI Integration Highlight */}
-                        <div className="p-3 bg-stroke/50 border border-stroke/70 rounded-xl text-sm text-zinc-150 font-semibold">
+                        <div className="p-3 bg-stroke/50 border border-stroke/70 rounded-xl text-sm text-zinc-150 font-semibold mb-3">
                           <span className="text-text-primary font-bold">Vai trò AI:</span> {project.aiRole}
                         </div>
+
+                        {project.process && (
+                          <div className="p-3 bg-stroke/50 border border-stroke/70 rounded-xl text-sm text-zinc-150 font-semibold mb-3">
+                            <span className="text-text-primary font-bold">Quá trình trao đổi:</span> {project.process}
+                          </div>
+                        )}
+
+                        {project.growth && (
+                          <div className="p-3 bg-stroke/50 border border-stroke/70 rounded-xl text-sm text-zinc-150 font-semibold">
+                            <span className="text-text-primary font-bold">Kỹ năng phát triển:</span> {project.growth}
+                          </div>
+                        )}
                       </div>
 
                       <div className="flex justify-between items-center w-full mt-4">
