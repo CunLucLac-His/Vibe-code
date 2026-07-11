@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowUp, Send } from "lucide-react";
 import Hls from "hls.js";
@@ -310,10 +310,10 @@ function App() {
     };
   }, [isLoading, isMobile]);
 
-  const handleLoadingComplete = () => {
+  const handleLoadingComplete = useCallback(() => {
     sessionStorage.setItem(INTRO_SESSION_KEY, "1");
     setIsLoading(false);
-  };
+  }, []);
 
   // Scroll to element helper
   const scrollToSection = (id: string) => {
